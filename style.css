@@ -158,6 +158,21 @@ body {
   border-color: #dcb66c;
 }
 
+.service-description {
+  display: none;
+}
+
+.service-title {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.service-title:hover {
+  color: #dcb66c;
+}
+
+
+
 /* Contact Form */
 .contact form {
   max-width: 600px;

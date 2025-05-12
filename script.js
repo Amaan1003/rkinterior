@@ -103,3 +103,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
   }, 1500);
 });
+
+// Wait for the document to be ready
+document.addEventListener('DOMContentLoaded', function () {
+  // Get all service titles
+  const serviceTitles = document.querySelectorAll('.service-title');
+
+  // Add click event listeners to each service title
+  serviceTitles.forEach(function (title) {
+    title.addEventListener('click', function () {
+      // Toggle the display of the corresponding description
+      const description = title.nextElementSibling;
+      if (description.style.display === "none" || description.style.display === "") {
+        description.style.display = "block";
+      } else {
+        description.style.display = "none";
+      }
+    });
+  });
+});
