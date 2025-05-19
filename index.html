@@ -21,21 +21,23 @@
 </head>
 <body>
 
-    <header class="header">
-        <div class="container header-inner">
-          <a href="#" class="logo">
-            <img src="images/Rk.png" alt="RK Interior Logo">
-          </a>
-          <nav class="nav">
-            <ul>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#services">Services</a></li>
-              <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i>ABOUT US</a>              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-          <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-        </div>
-      </header>
+   <header class="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <img src="images/Rk.png" alt="RK Interior Logo">
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <nav class="nav">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
       
 
       <section class="hero">
@@ -49,115 +51,23 @@
     
 
   <br><iframe src="Clients.html" width="100%" height="250px" frameborder="0"></iframe>
+  
+<iframe src="services.html" id="servicesFrame" width="100%" frameborder="0" scrolling="no"></iframe>
 
+<script>
+  // Listen for height message from iframe
+  window.addEventListener("message", (event) => {
+    if (event.data.iframeHeight && document.getElementById("servicesFrame")) {
+      document.getElementById("servicesFrame").style.height = event.data.iframeHeight + "px";
+    }
+  });
+</script>
 
-
-  <div id="part2">
-    <div id="moving-text">
-      <div class="con">
-        <h1>EXPERIANCES</h1>
-        <div id="dot"></div>
-        <h1>CONTENT</h1>
-        <div id="dot"></div>
-        <h1>ENVIRONMENTS</h1>
-        <div id="dot"></div>
-      </div>
-      <div class="con">
-        <h1>EXPERIANCES</h1>
-        <div id="dot"></div>
-        <h1>CONTENT</h1>
-        <div id="dot"></div>
-        <h1>ENVIRONMENTS</h1>
-        <div id="dot"></div>
-      </div>
-      <div class="con">
-        <h1>EXPERIANCES</h1>
-        <div id="dot"></div>
-        <h1>CONTENT</h1>
-        <div id="dot"></div>
-        <h1>ENVIRONMENTS</h1>
-        <div id="dot"></div>
-      </div>
-    </div>
-  </div>
 
   <section id="services" class="services">
     <div class="container">
-      <h2 class="section-title">What We Do</h2>
-      <div class="grid">
-        <div class="card fade-in">
-          <h3 class="service-title">Architectural Planning</h3>
-          <div class="service-description">
-            <p>Designing architectural plans for functional and aesthetic excellence.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Interior Designing</h3>
-          <div class="service-description">
-            <p>Transform spaces with harmonious style and functionality.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Interior Contracting</h3>
-          <div class="service-description">
-            <p>Comprehensive interior design and services, tailored perfectly.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Fabrication Work</h3>
-          <div class="service-description">
-            <p>Delivering high-quality fabrication work for your specifications.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Aluminum Work</h3>
-          <div class="service-description">
-            <p>Specialized aluminum services for aesthetic and structural integrity.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Civil Work</h3>
-          <div class="service-description">
-            <p>Executing civil engineering projects with precision and quality.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Furniture Work</h3>
-          <div class="service-description">
-            <p>Expert furniture design combining functionality and style.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">False Ceiling Work</h3>
-          <div class="service-description">
-            <p>Visual impact and acoustics with expert false ceilings.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Painting Work</h3>
-          <div class="service-description">
-            <p>Professional painting services adding vibrancy and personality.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Upholstery Work</h3>
-          <div class="service-description">
-            <p>Expert upholstery services customizing furnishings to your taste.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Electrical Work</h3>
-          <div class="service-description">
-            <p>Comprehensive electrical services for safety and efficiency.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <h3 class="service-title">Plumbing Work</h3>
-          <div class="service-description">
-            <p>Ideal water distribution and drainage systems with our plumbing solutions.</p>
-          </div>
-        </div>
-      </div>
+
+
     </div>
   </section>
   
