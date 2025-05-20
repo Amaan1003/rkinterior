@@ -33,7 +33,7 @@ export function init3D() {
   
   // Load model (update path to your GLB file)
   const loader = new GLTFLoader();
-  //loader.load('3d/modern_bedroom (1).glb', (gltf) => {
+  loader.load('3d/modern_bedroom (1).glb', (gltf) => {
     model = gltf.scene;
     model.scale.set(1.5, 1.5, 1.5);
     model.position.y = -1;

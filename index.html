@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
   <!-- Add Three.js scripts -->
-  <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <!--<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
   <script type="importmap">
     {
       "imports": {
@@ -18,6 +18,7 @@
       }
     }
   </script>
+   -->
 </head>
 <body>
   
@@ -33,19 +34,45 @@
 
 
 
-      
-      <section class="hero">
-        <canvas id="heroCanvas"></canvas>
-        <div class="container">
-          <h2>Experience Premium Living</h2>
-          <p>We design interiors that reflect elegance, function, and soul.</p>
-          <a href="#projects" class="cta">Explore Now</a>
-        </div>
-      </section>
+  <section class="luxury-hero">
+  <!-- Custom background image element added -->
+  <div class="luxury-hero-bg">
+    <img src="images/hero.jpg" alt="" class="luxury-bg-image">
+  </div>
+  <canvas id="luxuryHeroCanvas"></canvas>
+  <div class="luxury-hero-overlay"></div>
+  <div class="luxury-particles" id="luxury-particles-js"></div>
+  <div class="luxury-container">
+    <div class="luxury-hero-content">
+      <h1 class="luxury-hero-title">
+        <span class="luxury-title-line">Experience</span>
+        <span class="luxury-title-line luxury-gold-text">Premium Living</span>
+      </h1>
+      <p class="luxury-hero-subtitle">We design interiors that reflect <span class="luxury-gold-text">elegance</span>, <span class="luxury-gold-text">function</span>, and <span class="luxury-gold-text">soul</span>.</p>
+      <div class="luxury-cta-container">
+        <a href="#projects" class="luxury-cta-button">
+          <span>Explore Now</span>
+          <div class="luxury-cta-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+        <a href="#contact" class="luxury-secondary-button">
+          <span>Book Consultation</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="luxury-scroll-indicator">
+    <div class="luxury-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
     
       
 
-  <br><iframe src="Clients.html" width="100%" height="350px" frameborder="0" scrolling="no"></iframe>
+  <br><iframe src="clients.html" width="100%" height="350px" frameborder="0" scrolling="no"></iframe>
   
 <iframe src="services.html" id="servicesFrame" width="100%" frameborder="0" scrolling="no"></iframe>
 
@@ -70,7 +97,7 @@ window.addEventListener('message', function(event) {
       <!-- Project 1 -->
       <div class="project-card">
         <div class="project-image">
-          <img src="project1.jpg" alt="Luxury Penthouse Design">
+          <img src="https://images.pexels.com/photos/32136782/pexels-photo-32136782/free-photo-of-elegant-vintage-chandelier-in-classic-interior.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury Penthouse Design">
           <div class="project-overlay">
             <div class="overlay-content">
               <h3>Golden Heights Penthouse</h3>
@@ -92,7 +119,7 @@ window.addEventListener('message', function(event) {
       <!-- Project 2 -->
       <div class="project-card">
         <div class="project-image">
-          <img src="project2.jpg" alt="Boutique Hotel Lobby">
+          <img src="https://images.pexels.com/photos/1457844/pexels-photo-1457844.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Boutique Hotel Lobby">
           <div class="project-overlay">
             <div class="overlay-content">
               <h3>Azure Sands Resort</h3>
@@ -103,7 +130,7 @@ window.addEventListener('message', function(event) {
         </div>
         <div class="project-info">
           <h3>Azure Sands Resort</h3>
-          <p>Oceanfront luxury resort blending contemporary design with organic elements</p>
+          <p>Oceanfront luxury resort blending design with organic elements</p>
           <div class="project-meta">
             <span>Hospitality</span>
             <span>2023</span>
@@ -114,7 +141,7 @@ window.addEventListener('message', function(event) {
       <!-- Project 3 -->
       <div class="project-card">
         <div class="project-image">
-          <img src="project3.jpg" alt="Executive Office Space">
+          <img src="https://images.pexels.com/photos/32135631/pexels-photo-32135631/free-photo-of-modern-spiral-chandelier-in-decorated-mosque-ceiling.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Executive Office Space">
           <div class="project-overlay">
             <div class="overlay-content">
               <h3>Platinum Capital Offices</h3>
@@ -150,28 +177,163 @@ window.addEventListener('message', function(event) {
     }
   });
 </script>
+
+
+<!-- RK Luxury Interior Gallery -->
+<section class="rk-gallery-section">
+  <div class="rk-gallery-header">
+    <span class="rk-gallery-subtitle">Our Signature Designs</span>
+    <h2 class="rk-gallery-title">Interior Masterpieces</h2>
+    <p class="rk-gallery-description">Where visionary design meets impeccable craftsmanship</p>
+  </div>
+
+  <div class="rk-collage-container">
+    <div class="rk-collage-grid">
+      <!-- Main featured image (top left) -->
+      <div class="rk-collage-item rk-featured-item">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+             alt="Luxury penthouse living room" loading="lazy">
+      </div>
+      
+      <!-- Secondary images -->
+      <div class="rk-collage-item rk-secondary-item">
+        <img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+             alt="Modern gourmet kitchen" loading="lazy">
+      </div>
+      
+      <div class="rk-collage-item rk-tertiary-item">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+             alt="Luxury master bedroom" loading="lazy">
+      </div>
+      
+      <div class="rk-collage-item rk-quaternary-item">
+        <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+             alt="Executive office space" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="rk-gallery-cta">
+    <button class="rk-gallery-btn">
+      <span>View Full Gallery</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</section>
   
   
 
+<!-- Testimonials Section -->
+<div class="testimonials-iframe-container">
+  <iframe src="testimonial.html" id="testimonialsFrame" width="100%" frameborder="0" scrolling="no"></iframe>
+</div>
 
+<script>
+  // Handle iframe resizing
+  window.addEventListener('message', function(event) {
+    if (event.data.iframeId === 'testimonialsFrame') {
+      const iframe = document.getElementById('testimonialsFrame');
+      iframe.style.height = event.data.height + 'px';
+    }
+  });
+</script>
 
-  <section id="contact" class="contact">
-    <div class="container framed">
-      <h2 class="section-title">Get In Touch</h2>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
+<style>
+  .testimonials-iframe-container {
+    margin: 4rem 0;
+    position: relative;
+  }
+  #testimonialsFrame {
+    border: none;
+    display: block;
+    width: 100%;
+  }
+</style>
+
+<!-- Get in Touch Section -->
+<section id="rk-contact" class="rk-contact-section">
+  <div class="rk-contact-container">
+    <div class="rk-contact-header">
+      <span class="rk-contact-subtitle">Connect With Us</span>
+      <h2 class="rk-contact-title">Get in Touch</h2>
+      <p class="rk-contact-desc">Let's discuss how we can transform your space into something extraordinary</p>
+    </div>
+
+    <div class="rk-contact-content">
+      <div class="rk-contact-info">
+        <div class="rk-info-card">
+          <div class="rk-info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="rk-info-content">
+            <h3>Our Studio</h3>
+            <p>123 Design Avenue, Interior District<br>Mumbai 400001, India</p>
+          </div>
+        </div>
+
+        <div class="rk-info-card">
+          <div class="rk-info-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="rk-info-content">
+            <h3>Call Us</h3>
+            <p>+91 98765 43210<br>Mon-Sat, 10am-7pm</p>
+          </div>
+        </div>
+
+        <div class="rk-info-card">
+          <div class="rk-info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="rk-info-content">
+            <h3>Email Us</h3>
+            <p>contact@rkinteriors.com<br>inquiries@rkinteriors.com</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="rk-contact-form" id="rkContactForm">
+        <div class="rk-form-group">
+          <input type="text" id="rkName" name="name" required>
+          <label for="rkName">Your Name</label>
+          <div class="rk-input-underline"></div>
+        </div>
+
+        <div class="rk-form-group">
+          <input type="email" id="rkEmail" name="email" required>
+          <label for="rkEmail">Email Address</label>
+          <div class="rk-input-underline"></div>
+        </div>
+
+        <div class="rk-form-group">
+          <input type="tel" id="rkPhone" name="phone">
+          <label for="rkPhone">Phone Number</label>
+          <div class="rk-input-underline"></div>
+        </div>
+
+        <div class="rk-form-group rk-textarea-group">
+          <textarea id="rkMessage" name="message" rows="4" required></textarea>
+          <label for="rkMessage">Your Message</label>
+          <div class="rk-input-underline"></div>
+        </div>
+
+        <button type="submit" class="rk-submit-btn">
+          <span>Send Message</span>
+          <i class="fas fa-paper-plane"></i>
+        </button>
       </form>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Luxury Interiors. Designed with elegance.</p>
-    </div>
-  </footer>
+<iframe 
+    src="footer.html" 
+    style="width: 100%; height: 500px; border: none; overflow: hidden;"
+    scrolling="no"
+    frameborder="0"
+></iframe>
 
   <script>
     const menuToggle = document.querySelector('.menu-toggle');

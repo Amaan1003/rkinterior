@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Testimonials</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <style>
+    :root {
+      --lux-gold: #D4AF37;
+      --lux-gold-light: #FFD700;
+      --lux-bg-dark: #0a0a0a;
+      --lux-bg-card: #1a1a1a;
+      --lux-text-light: rgba(255,255,255,0.9);
+      --lux-text-gray: rgba(255,255,255,0.7);
+    }
+
+    .lux-testimonials {
+      padding: 3rem 2rem;
+      background: var(--lux-bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lux-testimonials::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--lux-gold), transparent);
+    }
+
+    .lux-testimonials::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--lux-gold), transparent);
+    }
+
+    .lux-testimonials-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .lux-section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .lux-section-subtitle {
+      font-size: 1rem;
+      letter-spacing: 3px;
+      color: var(--lux-gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    .lux-section-subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: var(--lux-gold);
+    }
+
+    .lux-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--lux-gold-light), var(--lux-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0.5rem 0 1rem;
+    }
+
+    /* Desktop Grid Layout */
+    .lux-testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    /* Mobile Slider */
+    .lux-testimonials-slider {
+      display: none;
+      position: relative;
+    }
+
+    .lux-testimonial-card {
+      background: var(--lux-bg-card);
+      border-radius: 8px;
+      padding: 2.5rem;
+      position: relative;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      transition: all 0.4s ease;
+      margin: 0 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .lux-testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .lux-testimonial-card::before {
+      content: '“';
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: rgba(212, 175, 55, 0.1);
+      line-height: 1;
+    }
+
+    .lux-testimonial-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--lux-text-light);
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lux-testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .lux-author-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--lux-gold);
+    }
+
+    .lux-author-info h4 {
+      font-size: 1.2rem;
+      color: var(--lux-gold-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .lux-author-info p {
+      font-size: 0.9rem;
+      color: var(--lux-text-gray);
+      margin: 0;
+    }
+
+    .lux-rating {
+      color: var(--lux-gold);
+      margin-top: 0.5rem;
+    }
+
+    .lux-rating i {
+      margin-right: 2px;
+    }
+
+    /* Slider Arrows */
+    .slick-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.2);
+      border: none;
+      color: var(--lux-gold);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .slick-arrow:hover {
+      background: var(--lux-gold);
+      color: #000;
+    }
+
+    .slick-prev {
+      left: -20px;
+    }
+
+    .slick-next {
+      right: -20px;
+    }
+
+    /* Slider Dots */
+    .slick-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .slick-dots li {
+      margin: 0 5px;
+    }
+
+    .slick-dots button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.2);
+      text-indent: -9999px;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    .slick-dots .slick-active button {
+      background: var(--lux-gold);
+      transform: scale(1.2);
+    }
+
+    /* Floating decorative elements */
+    .lux-floating-element {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.05), transparent 70%);
+      filter: blur(30px);
+      z-index: 0;
+    }
+
+    .lux-floating-element-1 {
+      top: 10%;
+      left: 5%;
+    }
+
+    .lux-floating-element-2 {
+      bottom: 15%;
+      right: 8%;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .lux-testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .lux-testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .lux-testimonials {
+        padding: 4rem 1.5rem;
+      }
+      
+      .lux-testimonials-grid {
+        display: none;
+      }
+      
+      .lux-testimonials-slider {
+        display: block;
+      }
+      
+      .lux-testimonial-card {
+        padding: 2rem;
+        margin: 0 0.5rem;
+      }
+      
+      .slick-prev {
+        left: -10px;
+      }
+      
+      .slick-next {
+        right: -10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .lux-section-subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .lux-testimonial-card {
+        padding: 1.5rem;
+      }
+      
+      .lux-testimonial-text {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="lux-testimonials">
+    <!-- Decorative floating elements -->
+    <div class="lux-floating-element lux-floating-element-1"></div>
+    <div class="lux-floating-element lux-floating-element-2"></div>
+    
+    <div class="lux-testimonials-container">
+      <div class="lux-section-header">
+        <span class="lux-section-subtitle">Client Experiences</span>
+        <h2 class="lux-section-title">Testimonials</h2>
+      </div>
+      
+      <!-- Desktop Grid Layout -->
+      <div class="lux-testimonials-grid">
+        <!-- Testimonial 1 -->
+        <div class="lux-testimonial-card">
+          <p class="lux-testimonial-text">
+            RK Interiors transformed our penthouse beyond expectations. Their attention to detail and unique design 
+            perspective created a space that's both luxurious and livable.
+          </p>
+          <div class="lux-testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya Shah" class="lux-author-avatar">
+            <div class="lux-author-info">
+              <h4>Priya Shah</h4>
+              <p>Malabar Hill Residence</p>
+              <div class="lux-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="lux-testimonial-card">
+          <p class="lux-testimonial-text">
+            Working with RK Interiors on our corporate office was seamless. They understood our brand aesthetic and 
+            elevated it with their sophisticated design approach.
+          </p>
+          <div class="lux-testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Mehta" class="lux-author-avatar">
+            <div class="lux-author-info">
+              <h4>Rahul Mehta</h4>
+              <p>TechNova Solutions</p>
+              <div class="lux-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="lux-testimonial-card">
+          <p class="lux-testimonial-text">
+            The interior design for our boutique hotel exceeded all expectations. RK's team created a perfect blend of 
+            contemporary luxury and local cultural elements.
+          </p>
+          <div class="lux-testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Neha Kapoor" class="lux-author-avatar">
+            <div class="lux-author-info">
+              <h4>Neha Kapoor</h4>
+              <p>The Azure Hotel</p>
+              <div class="lux-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 4 -->
+        <div class="lux-testimonial-card">
+          <p class="lux-testimonial-text">
+            As a film production company, we needed spaces that inspire creativity. RK Interiors delivered beyond our 
+            wildest dreams - each room tells a story.
+          </p>
+          <div class="lux-testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Vikram Joshi" class="lux-author-avatar">
+            <div class="lux-author-info">
+              <h4>Vikram Joshi</h4>
+              <p>Cinestaan Productions</p>
+              <div class="lux-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile Slider Layout -->
+      <div class="lux-testimonials-slider">
+        <!-- Same testimonials repeated for slider -->
+        <div class="lux-testimonial-card">
+          <p class="lux-testimonial-text">
+            RK Interiors transformed our penthouse beyond expectations. Their attention to detail and unique design 
+            perspective created a space that's both luxurious and livable.
+          </p>
+          <div class="lux-testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya Shah" class="lux-author-avatar">
+            <div class="lux-author-info">
+              <h4>Priya Shah</h4>
+              <p>Malabar Hill Residence</p>
+              <div class="lux-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lux-testimonial-card">
+          <p class="lux-testimonial-text">
+            Working with RK Interiors on our corporate office was seamless. They understood our brand aesthetic and 
+            elevated it with their sophisticated design approach.
+          </p>
+          <div class="lux-testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Mehta" class="lux-author-avatar">
+            <div class="lux-author-info">
+              <h4>Rahul Mehta</h4>
+              <p>TechNova Solutions</p>
+              <div class="lux-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lux-testimonial-card">
+          <p class="lux-testimonial-text">
+            The interior design for our boutique hotel exceeded all expectations. RK's team created a perfect blend of 
+            contemporary luxury and local cultural elements.
+          </p>
+          <div class="lux-testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Neha Kapoor" class="lux-author-avatar">
+            <div class="lux-author-info">
+              <h4>Neha Kapoor</h4>
+              <p>The Azure Hotel</p>
+              <div class="lux-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lux-testimonial-card">
+          <p class="lux-testimonial-text">
+            As a film production company, we needed spaces that inspire creativity. RK Interiors delivered beyond our 
+            wildest dreams - each room tells a story.
+          </p>
+          <div class="lux-testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Vikram Joshi" class="lux-author-avatar">
+            <div class="lux-author-info">
+              <h4>Vikram Joshi</h4>
+              <p>Cinestaan Productions</p>
+              <div class="lux-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- jQuery and Slick Slider -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  
+  <script>
+    // Initialize slider only on mobile
+    $(document).ready(function(){
+      $('.lux-testimonials-slider').slick({
+        dots: true,
+        arrows: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnHover: true,
+        adaptiveHeight: true
+      });
+      
+      // Auto iframe height adjustment
+      function sendHeight() {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({
+          iframeId: 'testimonialsFrame',
+          height: height
+        }, '*');
+      }
+      
+      // Send height on load and resize
+      window.addEventListener('load', sendHeight);
+      window.addEventListener('resize', sendHeight);
+      
+      // Also adjust after slider initializes
+      $('.lux-testimonials-slider').on('init', sendHeight);
+    });
+  </script>
+</body>
+</html>

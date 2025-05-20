@@ -122,3 +122,230 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+// RK Gallery Animation
+document.addEventListener('DOMContentLoaded', function() {
+  const galleryItems = document.querySelectorAll('.rk-collage-item');
+  
+  // Set animation delays for mobile
+  if (window.innerWidth <= 768) {
+    galleryItems.forEach((item, index) => {
+      item.style.setProperty('--i', index);
+    });
+  }
+  
+  // Intersection Observer for scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  galleryItems.forEach(item => {
+    observer.observe(item);
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth <= 768) {
+      galleryItems.forEach((item, index) => {
+        item.style.setProperty('--i', index);
+      });
+    }
+  });
+  
+  // Button hover effect
+  const galleryBtn = document.querySelector('.rk-gallery-btn');
+  if (galleryBtn) {
+    galleryBtn.addEventListener('mouseenter', () => {
+      galleryBtn.querySelector('svg').style.transform = 'translateY(3px)';
+    });
+    galleryBtn.addEventListener('mouseleave', () => {
+      galleryBtn.querySelector('svg').style.transform = 'translateY(0)';
+    });
+  }
+});
+
+
+//hero section
+// 3D Canvas Animation for Luxury Hero
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize Canvas
+  const canvas = document.getElementById('luxuryHeroCanvas');
+  const ctx = canvas.getContext('2d');
+  
+  // Set canvas size
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = document.querySelector('.luxury-hero').offsetHeight;
+  }
+  
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+  
+  // Luxury Gold Particles
+  class LuxuryParticle {
+    constructor() {
+      this.reset();
+      this.y = Math.random() * canvas.height;
+    }
+    
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = -20;
+      this.size = Math.random() * 3 + 1;
+      this.speed = Math.random() * 0.5 + 0.2;
+      this.opacity = Math.random() * 0.6 + 0.1;
+      this.color = `rgba(212, 175, 55, ${this.opacity})`;
+      this.angle = Math.random() * Math.PI * 2;
+      this.velocity = Math.random() * 0.2 - 0.1;
+    }
+    
+    update() {
+      this.y += this.speed;
+      this.x += Math.sin(this.angle) * 0.5;
+      this.angle += this.velocity;
+      
+      if (this.y > canvas.height + 10) {
+        this.reset();
+      }
+    }
+    
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = this.color;
+      ctx.fill();
+    }
+  }
+  
+  // Create particles
+  const luxuryParticles = [];
+  const particleCount = Math.floor(window.innerWidth / 5);
+  
+  for (let i = 0; i < particleCount; i++) {
+    luxuryParticles.push(new LuxuryParticle());
+  }
+  
+  // Animation loop
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw subtle gradient overlay
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    gradient.addColorStop(0, 'rgba(0, 0, 0, 0.8)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0.2)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Update and draw particles
+    luxuryParticles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
+    
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+  
+  // Initialize particles.js for additional luxury effect
+  if (typeof particlesJS !== 'undefined') {
+    particlesJS('luxury-particles-js', {
+      "particles": {
+        "number": {
+          "value": 30,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#D4AF37"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 2,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#D4AF37",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": true,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 0.5
+            }
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  }
+});
