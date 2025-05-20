@@ -1,171 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Clients - Luxury Interior</title>
-
-  <!-- Fonts & Icons -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Titillium+Web:wght@300;700&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap & Slick -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Clients</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #0F0F0F;
-      font-family: 'Titillium Web', sans-serif;
-      color: #F5F5F5;
-    }
-
-    h2 {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 2em;
-      color: #dcb66c;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    .container {
- 	  padding: 2vw 0;
+    :root {
+      --gold: #FFD700;
+      --dark-bg: #0a0a0a;
+      --card-bg: #1a1a1a;
     }
     
-
-/* Apply a gold gradient and text shadow to each slide text */
-.customer-logos .slide {
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    background: linear-gradient(45deg, #dcb66c, #dcb66c, #dcb66c);
-    color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-    padding: 10px;
-    border-radius: 8px;
-    margin: 10px;
-    text-align: center;
-    transform: scale(1);
-    transition: all 0.3s ease-in-out;
-}
-
-/* Hover Effect: Luxurious animation */
-.customer-logos .slide:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-
-
-    /* Completely hide all slick arrows */
-.slick-arrow,
-.slick-prev,
-.slick-next {
-  display: none !important;
-}
-
-/* Prevent horizontal or vertical scroll */
-body,
-html {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-    .slick-slide {
-      margin: 0px 10px;
+    body {
+      background: var(--dark-bg);
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
 
-    .slick-slider {
+    .clients-section {
+      padding: 1rem 0;
       position: relative;
-      display: block;
-      box-sizing: border-box;
-      user-select: none;
-      touch-action: pan-y;
     }
 
-    .slick-track {
-      display: flex;
+    .section-header {
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
-    /* Optional: Loading shimmer if needed */
-    .slide::before {
-      content: '';
-      display: block;
-      height: 3px;
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 1px;
+    }
+
+    .clients-container {
       width: 100%;
-      background: linear-gradient(90deg, rgba(255,215,0,0.2), rgba(255,215,0,0.6), rgba(255,215,0,0.2));
-      margin-bottom: 10px;
-      animation: shimmer 2s infinite linear;
+      overflow: hidden;
+      position: relative;
     }
 
-    @keyframes shimmer {
-      0% { background-position: -200px 0; }
-      100% { background-position: 200px 0; }
+    .clients-track {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      animation: scroll 30s linear infinite;
+    }
+
+    .client-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      min-width: 280px;
+      border: 1px solid rgba(255,215,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .client-card:hover {
+      border-color: rgba(255,215,0,0.3);
+      transform: translateY(-5px);
+    }
+
+    .client-name {
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .client-location {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-280px * 7 - 1.5rem * 7)); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .client-card {
+        min-width: 240px;
+        padding: 1.2rem 1.5rem;
+      }
+      
+      @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-240px * 7 - 1.5rem * 7)); }
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .client-card {
+        min-width: 200px;
+        padding: 1rem;
+      }
+      
+      @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-200px * 7 - 1.5rem * 7)); }
+      }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <h2>Our Esteemed Clients</h2>
-    <section class="customer-logos slider">
-      <div class="slide">Architect Ashwin @ Opera House Mumbai</div>
-      <div class="slide">MahindraCinestaan film Company @ Andheri</div>
-      <div class="slide">Ketan Shah @ Darya Mahal Mumbai</div>
-      <div class="slide">Nitish Bansali @ Pushpa Milan Mumbai</div>
-      <div class="slide">Pratik Shah @ Walkeshwar Mumbai</div>
-      <div class="slide">TEAMLEADER Logistics Pvt Ltd</div>
-      <div class="slide">Huzzifa Rangwala @ Mumbai Central</div>
-      <div class="slide">Orbit Plaza Office @ Andheri</div>
-      <div class="slide">Prime Corporate Park @ Andheri</div>
-      <div class="slide">Siroya Center @ Andheri</div>
-      <div class="slide">Siddhivinayak TheOne @ Bandra</div>
-      <div class="slide">Everard CHS @ Chembur</div>
-      <div class="slide">Vidya Building @ Walkeshwar</div>
-      <div class="slide">Respicare Solutions @ Mahalaxmi</div>
-      <div class="slide">Kalpataru Building 1F, 1G @ Ghatkopar</div>
-      <div class="slide">Deepak Dhawani @ Walkeshwar</div>
-      <div class="slide">Pratik Shah @ Vidya Appartment, Chowpatty</div>
-      <div class="slide">VIDYA NIWAS CO-OP SOCIETY</div>
-      <div class="slide">Murtuza Bhai @ Nagpada</div>
-      <div class="slide">Chetak Jogani @ Grant Road</div>
-      <div class="slide">Surana Building @ Mumbai Central</div>
-      <div class="slide">Dr. Brijesh Yadav @ Lower Parel</div>
-      <div class="slide">Team Lead Logistic Pvt Ltd. @ Andheri</div>
-    </section>
-  </div>
-
-  <script>
-    $(document).ready(function(){
-      $('.customer-logos').slick({
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        arrows: false,
-        dots: false,
-        pauseOnHover: false,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: { slidesToShow: 4 }
-          },
-          {
-            breakpoint: 768,
-            settings: { slidesToShow: 3 }
-          },
-          {
-            breakpoint: 480,
-            settings: { slidesToShow: 2 }
-          }
-        ]
-      });
-    });
-  </script>
+  <section class="clients-section">
+    <div class="section-header">
+      <h2 class="section-title">Our Esteemed Clients</h2>
+      <p class="section-subtitle">Trusted by Mumbai's most discerning clientele</p>
+    </div>
+    
+    <div class="clients-container">
+      <div class="clients-track">
+        <!-- Client 1 -->
+        <div class="client-card">
+          <h3 class="client-name">Architect Ashwin</h3>
+          <p class="client-location">Opera House, Mumbai</p>
+        </div>
+        
+        <!-- Client 2 -->
+        <div class="client-card">
+          <h3 class="client-name">MahindraCinestaan</h3>
+          <p class="client-location">Andheri, Mumbai</p>
+        </div>
+        
+        <!-- Client 3 -->
+        <div class="client-card">
+          <h3 class="client-name">Ketan Shah</h3>
+          <p class="client-location">Darya Mahal, Mumbai</p>
+        </div>
+        
+        <!-- Client 4 -->
+        <div class="client-card">
+          <h3 class="client-name">Nitish Bansali</h3>
+          <p class="client-location">Pushpa Milan, Mumbai</p>
+        </div>
+        
+        <!-- Client 5 -->
+        <div class="client-card">
+          <h3 class="client-name">Pratik Shah</h3>
+          <p class="client-location">Walkeshwar, Mumbai</p>
+        </div>
+        
+        <!-- Client 6 -->
+        <div class="client-card">
+          <h3 class="client-name">TEAMLEADER Logistics</h3>
+          <p class="client-location">Andheri, Mumbai</p>
+        </div>
+        
+        <!-- Client 7 -->
+        <div class="client-card">
+          <h3 class="client-name">Huzzifa Rangwala</h3>
+          <p class="client-location">Mumbai Central</p>
+        </div>
+        
+        <!-- Duplicates for seamless looping -->
+        <div class="client-card">
+          <h3 class="client-name">Architect Ashwin</h3>
+          <p class="client-location">Opera House, Mumbai</p>
+        </div>
+        
+        <div class="client-card">
+          <h3 class="client-name">MahindraCinestaan</h3>
+          <p class="client-location">Andheri, Mumbai</p>
+        </div>
+        
+        <div class="client-card">
+          <h3 class="client-name">Ketan Shah</h3>
+          <p class="client-location">Darya Mahal, Mumbai</p>
+        </div>
+        
+        <div class="client-card">
+          <h3 class="client-name">Nitish Bansali</h3>
+          <p class="client-location">Pushpa Milan, Mumbai</p>
+        </div>
+        
+        <div class="client-card">
+          <h3 class="client-name">Pratik Shah</h3>
+          <p class="client-location">Walkeshwar, Mumbai</p>
+        </div>
+        
+        <div class="client-card">
+          <h3 class="client-name">TEAMLEADER Logistics</h3>
+          <p class="client-location">Andheri, Mumbai</p>
+        </div>
+        
+        <div class="client-card">
+          <h3 class="client-name">Huzzifa Rangwala</h3>
+          <p class="client-location">Mumbai Central</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

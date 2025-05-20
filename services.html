@@ -3,137 +3,318 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What We Do</title>
+  <title>Our Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold: #D4AF37;
-      --black: #000000;
-      --font-size-large: clamp(1.5rem, 4vw, 3.5rem);
-      --dot-size: clamp(0.6rem, 2vw, 1.2rem);
+      --lux-gold-primary: #FFD700;
+      --lux-gold-secondary: #D4AF37;
+      --lux-bg-dark: #0a0a0a;
+      --lux-bg-light: #1a1a1a;
+      --lux-text-glow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--black);
-      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--lux-bg-dark);
+      color: white;
+      overflow-x: hidden;
     }
 
-    #part2 {
+    .lux-services-section {
       width: 100%;
-      padding: 3vw 0;
-      background-color: var(--black);
+      padding: 5vw 0;
+      background-color: var(--lux-bg-dark);
+      position: relative;
+      overflow: hidden;
     }
 
-    .section-title {
+    .lux-services-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(220, 182, 108, 0.5), transparent);
+    }
+
+    .lux-services-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(220, 182, 108, 0.5), transparent);
+    }
+
+    .lux-section-title {
       text-align: center;
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--lux-gold-primary), var(--lux-gold-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: 2rem;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+      position: relative;
+      padding-bottom: 1rem;
     }
 
-#moving-text {
-  display: flex;
-  overflow: hidden;
-  white-space: nowrap;
-}
+    .lux-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--lux-gold-primary), transparent);
+    }
 
-.con {
-  display: flex;
-  gap: 5rem;
-  align-items: center;
-  animation: move 30s linear infinite;
-  flex-shrink: 0;
-  width: max-content;
-}
+    .lux-services-marquee {
+      display: flex;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
 
-
-   #moving-text h1 {
-  font-size: clamp(1.2rem, 4vw, 2.5rem); /* responsive text size */
-  display: inline-block;
-  margin: 2; /* prevent extra space */
-  line-height: 1;
-}
-
-
-    #dot {
-      display: inline-block;
-      width: var(--dot-size);
-      height: var(--dot-size);
-      border-radius: 50%;
-      background: radial-gradient(circle at center, #FFD700, #D4AF37);
-      box-shadow: 0 0 8px #FFD70088;
+    .lux-services-track {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      animation: lux-scroll 40s linear infinite;
       flex-shrink: 0;
+      padding: 1.5rem 0;
     }
 
-    @keyframes move {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
+    .lux-service-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .lux-service-item:hover {
+      transform: scale(1.05);
+    }
+
+    .lux-service-name {
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      font-weight: 400;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+      position: relative;
+    }
+
+    .lux-service-name::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--lux-gold-primary);
+      transition: width 0.3s ease;
+    }
+
+    .lux-service-item:hover .lux-service-name::after {
+      width: 100%;
+    }
+
+    .lux-service-dot {
+      width: clamp(0.6rem, 1.5vw, 1rem);
+      height: clamp(0.6rem, 1.5vw, 1rem);
+      border-radius: 50%;
+      background: radial-gradient(circle at center, var(--lux-gold-primary), var(--lux-gold-secondary));
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .lux-service-dot::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      animation: lux-pulse 2s infinite;
+    }
+
+    @keyframes lux-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes lux-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .lux-services-track {
+        gap: 3rem;
       }
     }
 
-    /* Responsive Tuning */
     @media (max-width: 768px) {
-      #moving-text h1 {
-        font-size: clamp(1.2rem, 5vw, 2rem);
+      .lux-services-track {
+        gap: 2rem;
       }
-      .section-title {
-        font-size: 1.5rem;
+      
+      .lux-service-item {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .lux-services-track {
+        gap: 1.5rem;
+      }
+      
+      .lux-service-name {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <div id="part2">
-    <h2 class="section-title">What We Do</h2>
-    <div id="moving-text">
-      <!-- Repeat for looping effect -->
-      <div class="con">
-        <h1>Architectural Planning</h1><div id="dot"></div>
-        <h1>Interior Designing</h1><div id="dot"></div>
-        <h1>Interior Contracting</h1><div id="dot"></div>
-        <h1>Fabrication Work</h1><div id="dot"></div>
-        <h1>Aluminum Work</h1><div id="dot"></div>
-        <h1>Civil Work</h1><div id="dot"></div>
-        <h1>Furniture Work</h1><div id="dot"></div>
-        <h1>False Ceiling Work</h1><div id="dot"></div>
-        <h1>Painting Work</h1><div id="dot"></div>
-        <h1>Upholstery Work</h1><div id="dot"></div>
-        <h1>Electrical Work</h1><div id="dot"></div>
-        <h1>Plumbing Work</h1><div id="dot"></div>
+  <section class="lux-services-section">
+    <h2 class="lux-section-title">Our Services</h2>
+    <div class="lux-services-marquee">
+      <!-- First Set -->
+      <div class="lux-services-track">
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Architectural Planning</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Interior Designing</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Interior Contracting</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Fabrication Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Aluminum Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Civil Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Furniture Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">False Ceiling Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Painting Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Upholstery Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Electrical Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Plumbing Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
       </div>
-      <div class="con">
-        <!-- Duplicate for seamless scroll -->
-        <h1>Architectural Planning</h1><div id="dot"></div>
-        <h1>Interior Designing</h1><div id="dot"></div>
-        <h1>Interior Contracting</h1><div id="dot"></div>
-        <h1>Fabrication Work</h1><div id="dot"></div>
-        <h1>Aluminum Work</h1><div id="dot"></div>
-        <h1>Civil Work</h1><div id="dot"></div>
-        <h1>Furniture Work</h1><div id="dot"></div>
-        <h1>False Ceiling Work</h1><div id="dot"></div>
-        <h1>Painting Work</h1><div id="dot"></div>
-        <h1>Upholstery Work</h1><div id="dot"></div>
-        <h1>Electrical Work</h1><div id="dot"></div>
-        <h1>Plumbing Work</h1><div id="dot"></div>
+      
+      <!-- Duplicate for seamless scroll -->
+      <div class="lux-services-track">
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Architectural Planning</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Interior Designing</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Interior Contracting</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Fabrication Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Aluminum Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Civil Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Furniture Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">False Ceiling Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Painting Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Upholstery Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Electrical Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
+        <div class="lux-service-item">
+          <h3 class="lux-service-name">Plumbing Work</h3>
+          <div class="lux-service-dot"></div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-<script>
-  function sendHeight() {
-    const height = document.documentElement.scrollHeight;
-    window.parent.postMessage({ iframeHeight: height }, "*");
-  }
+ <script>
+// Automatically adjust iframe height to fit content
+function adjustIframeHeight() {
+  const contentHeight = document.body.scrollHeight;
+  window.parent.postMessage({
+    type: 'resize',
+    height: contentHeight,
+    iframeId: 'servicesFrame'
+  }, '*');
+}
 
-  window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
+// Adjust on load and resize
+window.addEventListener('load', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+
+// Also adjust after fonts load to prevent incorrect height calculation
+document.fonts.ready.then(adjustIframeHeight);
 </script>
-
 </body>
 </html>

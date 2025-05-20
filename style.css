@@ -74,7 +74,7 @@ body {
 
 /* Hero Section with 3D Canvas */
 .hero {
-  height: 100vh;
+  height: 70vh;
   position: relative;
   overflow: hidden;
 }
@@ -279,4 +279,289 @@ button[type="submit"] {
   color: var(--text);
   margin-top: 1rem;
 }
+
+/* seperator */
+/* Add to your CSS */
+.luxury-section {
+  position: relative;
+  padding-bottom: 3rem; /* Adjust as needed */
+}
+
+.luxury-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 600px;
+  height: 1px;
+  background: linear-gradient(90deg, 
+              transparent, 
+              rgba(220, 182, 108, 0.3), 
+              #ffffff, 
+              rgba(220, 182, 108, 0.3), 
+              transparent);
+  opacity: 0.7;
+}
+
+/* Optional animation */
+.luxury-section.animated::after {
+  background: linear-gradient(90deg, 
+              transparent, 
+              #ffffff, 
+              transparent);
+  background-size: 200% 100%;
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Luxury Projects Section */
+.luxury-projects {
+  padding: 5rem 0;
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMjAsMTgyLDEwOCwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.luxury-projects .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #FFD700, #f5ac19);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title span {
+  -webkit-text-fill-color: #fff;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.project-image {
+  position: relative;
+  overflow: hidden;
+  height: 350px;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  transform: translateY(20px);
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.project-card:hover .overlay-content {
+  transform: translateY(0);
+}
+
+.overlay-content h3 {
+  color: #FFD700;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.overlay-content p {
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 1rem;
+}
+
+.view-btn {
+  color: #000;
+  background: #FFD700;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  background: #fff;
+}
+
+.project-info {
+  padding: 1.5rem;
+  background: #1a1a1a;
+}
+
+.project-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.project-info p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  color: #FFD700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-link {
+  display: inline-block;
+  margin-top: 3rem;
+  color: #FFD700;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.cta-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #FFD700;
+  transition: width 0.3s ease;
+}
+
+.cta-link:hover {
+  letter-spacing: 1.5px;
+}
+
+.cta-link:hover::after {
+  width: 100%;
+}
+
+.cta-link span {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.cta-link:hover span {
+  transform: translateX(5px);
+}
+
+.view-all {
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-image {
+    height: 300px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.3s; }
+.project-card:nth-child(3) { animation-delay: 0.5s; }
+.project-card:nth-child(4) { animation-delay: 0.7s; }
 
