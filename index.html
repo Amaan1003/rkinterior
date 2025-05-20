@@ -20,23 +20,18 @@
   </script>
 </head>
 <body>
+  
+<div id="navbar-placeholder"></div>
 
-   <header class="header">
-  <div class="container header-inner">
-    <a href="#" class="logo">
-      <img src="images/Rk.png" alt="RK Interior Logo">
-    </a>
-    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-    <nav class="nav">
-      <ul>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<script>
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+    });
+</script>
+
+
 
       
 
