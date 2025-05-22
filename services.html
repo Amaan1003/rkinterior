@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Services</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
       --lux-gold-primary: #FFD700;
@@ -96,6 +97,7 @@
       align-items: center;
       gap: 1.5rem;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     .lux-service-item:hover {
@@ -149,6 +151,107 @@
       animation: lux-pulse 2s infinite;
     }
 
+    /* Modal Styles */
+    .lux-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lux-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lux-modal-content {
+      background-color: var(--lux-bg-dark);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+
+    .lux-modal.active .lux-modal-content {
+      transform: translateY(0);
+    }
+
+    .lux-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: var(--lux-gold-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .lux-modal-close:hover {
+      transform: rotate(90deg);
+    }
+
+    .lux-modal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding-bottom: 20px;
+    }
+
+    .lux-modal-icon {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+      object-fit: contain;
+    }
+
+    .lux-modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--lux-gold-primary);
+      margin: 0;
+    }
+
+    .lux-modal-body {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Service Details Grid for Mobile */
+    .lux-service-details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .lux-service-detail-item {
+      background: rgba(26, 26, 26, 0.5);
+      padding: 20px;
+      border-left: 3px solid var(--lux-gold-primary);
+    }
+
+    .lux-service-detail-title {
+      font-weight: 600;
+      color: var(--lux-gold-primary);
+      margin-bottom: 10px;
+    }
+
     @keyframes lux-scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -165,6 +268,10 @@
       .lux-services-track {
         gap: 3rem;
       }
+      
+      .lux-modal-content {
+        padding: 30px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -174,6 +281,20 @@
       
       .lux-service-item {
         gap: 1rem;
+      }
+      
+      .lux-modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .lux-modal-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      .lux-modal-title {
+        font-size: 1.5rem;
       }
     }
 
@@ -185,6 +306,16 @@
       .lux-service-name {
         font-size: 1rem;
       }
+      
+      .lux-modal-content {
+        padding: 20px;
+        width: 95%;
+      }
+      
+      .lux-modal-icon {
+        width: 50px;
+        height: 50px;
+      }
     }
   </style>
 </head>
@@ -194,51 +325,51 @@
     <div class="lux-services-marquee">
       <!-- First Set -->
       <div class="lux-services-track">
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Architectural Planning')">
           <h3 class="lux-service-name">Architectural Planning</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Interior Designing')">
           <h3 class="lux-service-name">Interior Designing</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Interior Contracting')">
           <h3 class="lux-service-name">Interior Contracting</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Fabrication Work')">
           <h3 class="lux-service-name">Fabrication Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Aluminum Work')">
           <h3 class="lux-service-name">Aluminum Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Civil Work')">
           <h3 class="lux-service-name">Civil Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Furniture Work')">
           <h3 class="lux-service-name">Furniture Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('False Ceiling Work')">
           <h3 class="lux-service-name">False Ceiling Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Painting Work')">
           <h3 class="lux-service-name">Painting Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Upholstery Work')">
           <h3 class="lux-service-name">Upholstery Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Electrical Work')">
           <h3 class="lux-service-name">Electrical Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Plumbing Work')">
           <h3 class="lux-service-name">Plumbing Work</h3>
           <div class="lux-service-dot"></div>
         </div>
@@ -246,51 +377,51 @@
       
       <!-- Duplicate for seamless scroll -->
       <div class="lux-services-track">
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Architectural Planning')">
           <h3 class="lux-service-name">Architectural Planning</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Interior Designing')">
           <h3 class="lux-service-name">Interior Designing</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Interior Contracting')">
           <h3 class="lux-service-name">Interior Contracting</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Fabrication Work')">
           <h3 class="lux-service-name">Fabrication Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Aluminum Work')">
           <h3 class="lux-service-name">Aluminum Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Civil Work')">
           <h3 class="lux-service-name">Civil Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Furniture Work')">
           <h3 class="lux-service-name">Furniture Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('False Ceiling Work')">
           <h3 class="lux-service-name">False Ceiling Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Painting Work')">
           <h3 class="lux-service-name">Painting Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Upholstery Work')">
           <h3 class="lux-service-name">Upholstery Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Electrical Work')">
           <h3 class="lux-service-name">Electrical Work</h3>
           <div class="lux-service-dot"></div>
         </div>
-        <div class="lux-service-item">
+        <div class="lux-service-item" onclick="openServiceModal('Plumbing Work')">
           <h3 class="lux-service-name">Plumbing Work</h3>
           <div class="lux-service-dot"></div>
         </div>
@@ -298,23 +429,212 @@
     </div>
   </section>
 
- <script>
-// Automatically adjust iframe height to fit content
-function adjustIframeHeight() {
-  const contentHeight = document.body.scrollHeight;
-  window.parent.postMessage({
-    type: 'resize',
-    height: contentHeight,
-    iframeId: 'servicesFrame'
-  }, '*');
-}
+  <!-- Service Modals -->
+  <div id="serviceModal" class="lux-modal">
+    <div class="lux-modal-content">
+      <span class="lux-modal-close" onclick="closeServiceModal()">&times;</span>
+      <div class="lux-modal-header">
+        <img id="modalServiceIcon" class="lux-modal-icon" src="" alt="">
+        <h3 id="modalServiceTitle" class="lux-modal-title"></h3>
+      </div>
+      <div class="lux-modal-body">
+        <p id="modalServiceDescription"></p>
+        <div class="lux-service-details-grid" id="modalServiceDetails">
+          <!-- Additional details will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
 
-// Adjust on load and resize
-window.addEventListener('load', adjustIframeHeight);
-window.addEventListener('resize', adjustIframeHeight);
+  <script>
+    // Service data - extracted from your provided content
+    const servicesData = {
+      "Architectural Planning": {
+        icon: "https://cdn1.vectorstock.com/i/1000x1000/98/10/architect-planning-icon-vector-26379810.jpg",
+        description: "Designing architectural plans for functional and aesthetic excellence.",
+        details: [
+          "Comprehensive space planning and layout design",
+          "Structural integrity assessment",
+          "Building code compliance review",
+          "3D modeling and visualization"
+        ]
+      },
+      "Interior Designing": {
+        icon: "https://cdn3.vectorstock.com/i/1000x1000/24/67/interior-design-icon-vector-732467.jpg",
+        description: "Transform spaces with harmonious style and functionality.",
+        details: [
+          "Custom color scheme development",
+          "Furniture selection and placement",
+          "Lighting design solutions",
+          "Material and finish selection"
+        ]
+      },
+      "Interior Contracting": {
+        icon: "https://a0.anyrgb.com/pngimg/1238/902/national-architectural-accrediting-board-landscape-architecture-civil-engineering-general-contractor-technical-drawing-architect-interior-design-services-icon-design-architecture-engineering.png",
+        description: "Comprehensive interior design and services, tailored perfectly.",
+        details: [
+          "Project management and coordination",
+          "Quality control supervision",
+          "Timeline and budget management",
+          "Vendor and subcontractor coordination"
+        ]
+      },
+      "Fabrication Work": {
+        icon: "https://static.thenounproject.com/png/4573186-200.png",
+        description: "Delivering high-quality fabrication work for your specifications.",
+        details: [
+          "Custom metal and wood fabrication",
+          "Precision CNC machining",
+          "Prototype development",
+          "Installation services"
+        ]
+      },
+      "Aluminum Work": {
+        icon: "https://media.istockphoto.com/id/1289584305/vector/metal-steel-product-vector-icon-design.jpg?s=612x612&w=0&k=20&c=tf0uKCvxJ4l1FdbKVIXahdaa5W-Q1DmLkPTBQGRCZOI=",
+        description: "Specialized aluminum services for aesthetic and structural integrity.",
+        details: [
+          "Window and door framing systems",
+          "Aluminum cladding solutions",
+          "Custom aluminum fabrication",
+          "Structural glazing systems"
+        ]
+      },
+      "Civil Work": {
+        icon: "https://cdn3.vectorstock.com/i/1000x1000/35/72/civil-engineering-icon-vector-9823572.jpg",
+        description: "Executing civil engineering projects with precision and quality.",
+        details: [
+          "Site preparation and grading",
+          "Foundation construction",
+          "Utility installation",
+          "Concrete work and paving"
+        ]
+      },
+      "Furniture Work": {
+        icon: "https://cdn0.iconfinder.com/data/icons/furniture-16/100/18-512.png",
+        description: "Expert furniture design combining functionality and style.",
+        details: [
+          "Custom furniture design",
+          "Built-in cabinetry solutions",
+          "Upholstery services",
+          "Furniture restoration"
+        ]
+      },
+      "False Ceiling Work": {
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0RPX3ylBwDDwIKvr4BgANOcychA_52GnG9E9S71v9Tw&s",
+        description: "Visual impact and acoustics with expert false ceilings.",
+        details: [
+          "Gypsum board ceiling installation",
+          "Acoustic ceiling solutions",
+          "Decorative ceiling designs",
+          "Lighting integration"
+        ]
+      },
+      "Painting Work": {
+        icon: "https://cdn-icons-png.flaticon.com/512/72/72020.png",
+        description: "Professional painting services adding vibrancy and personality.",
+        details: [
+          "Surface preparation and priming",
+          "Interior and exterior painting",
+          "Decorative finishes",
+          "Wallpaper installation"
+        ]
+      },
+      "Upholstery Work": {
+        icon: "https://media.istockphoto.com/id/1307563866/vector/household-items-and-alterations-black-linear-icon.jpg?s=612x612&w=0&k=20&c=HLE9acf1E040XzPPTskvwGyKrMZkZGiQcQm5LP6tk-w=",
+        description: "Expert upholstery services customizing furnishings to your taste.",
+        details: [
+          "Fabric selection consultation",
+          "Custom furniture upholstery",
+          "Leather repair and restoration",
+          "Window treatment fabrication"
+        ]
+      },
+      "Electrical Work": {
+        icon: "https://cdn5.vectorstock.com/i/1000x1000/91/89/electrician-work-black-concept-icon-vector-23239189.jpg",
+        description: "Comprehensive electrical services for safety and efficiency.",
+        details: [
+          "Wiring and rewiring",
+          "Lighting fixture installation",
+          "Electrical system upgrades",
+          "Smart home integration"
+        ]
+      },
+      "Plumbing Work": {
+        icon: "https://cdn2.vectorstock.com/i/1000x1000/35/81/plumbing-maintenance-black-concept-icon-vector-23243581.jpg",
+        description: "Ideal water distribution and drainage systems with our plumbing solutions.",
+        details: [
+          "Pipe installation and repair",
+          "Fixture installation",
+          "Water heater services",
+          "Drain cleaning and repair"
+        ]
+      }
+    };
 
-// Also adjust after fonts load to prevent incorrect height calculation
-document.fonts.ready.then(adjustIframeHeight);
-</script>
+    // Open service modal
+    function openServiceModal(serviceName) {
+      const service = servicesData[serviceName];
+      if (!service) return;
+      
+      document.getElementById('modalServiceIcon').src = service.icon;
+      document.getElementById('modalServiceTitle').textContent = serviceName;
+      document.getElementById('modalServiceDescription').textContent = service.description;
+      
+      const detailsContainer = document.getElementById('modalServiceDetails');
+      detailsContainer.innerHTML = '';
+      
+      service.details.forEach(detail => {
+        const detailItem = document.createElement('div');
+        detailItem.className = 'lux-service-detail-item';
+        detailItem.innerHTML = `
+          <div class="lux-service-detail-title">
+            <i class="fas fa-check-circle" style="color: var(--lux-gold-primary); margin-right: 8px;"></i>
+            ${detail}
+          </div>
+        `;
+        detailsContainer.appendChild(detailItem);
+      });
+      
+      document.getElementById('serviceModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close service modal
+    function closeServiceModal() {
+      document.getElementById('serviceModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside content
+    document.getElementById('serviceModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeServiceModal();
+      }
+    });
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && document.getElementById('serviceModal').classList.contains('active')) {
+        closeServiceModal();
+      }
+    });
+
+    // Automatically adjust iframe height to fit content
+    function adjustIframeHeight() {
+      const contentHeight = document.body.scrollHeight;
+      window.parent.postMessage({
+        type: 'resize',
+        height: contentHeight,
+        iframeId: 'servicesFrame'
+      }, '*');
+    }
+
+    // Adjust on load and resize
+    window.addEventListener('load', adjustIframeHeight);
+    window.addEventListener('resize', adjustIframeHeight);
+
+    // Also adjust after fonts load to prevent incorrect height calculation
+    document.fonts.ready.then(adjustIframeHeight);
+  </script>
 </body>
 </html>

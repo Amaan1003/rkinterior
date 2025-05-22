@@ -3,372 +3,607 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Rk Interior Footer</title>
+    <title>Ultra Luxury Footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+        :root {
+            --bg-dark: #0a0a0a;
+            --gold-primary: #FFD700;
+            --gold-secondary: #D4AF37;
+            --gold-tertiary: #f5d07a;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
         body {
-            background: #000;
-            color: #fff;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f1f1f1;
         }
 
-   
-    
+        /* Ultra Luxury Footer */
+        .ultra-footer {
+            background: linear-gradient(180deg, rgba(10,10,10,0) 0%, var(--bg-dark) 15%);
+            color: #f1f1f1;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
 
         .footer-container {
-            position: fixed;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Architectural Decorative Elements */
+        .footer-pillars {
+            position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            transform-style: preserve-3d;
-            perspective: 1000px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
             z-index: 1;
-            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
         }
 
-        .footer-container.hidden {
-            transform: translateY(100%);
-        }
-
-        .footer {
-            background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
-            color: #FFC700;
-            padding: 60px 0 30px;
+        .pillar {
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to top, transparent, rgba(212, 175, 55, 0.1), transparent);
             position: relative;
-            box-shadow: 0 -20px 50px rgba(212, 175, 55, 0.2);
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 30px 30px 0 0;
-            transform-origin: bottom;
-            transition: transform 0.5s ease;
         }
 
-        .footer::before {
+        .pillar::after {
             content: '';
             position: absolute;
-            top: -15px;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: linear-gradient(to right, #1a1a1a, #0a0a0a);
-            transform: skewY(-3deg);
-            z-index: -1;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--gold-primary);
+            opacity: 0.7;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            padding: 0 20px;
+        /* Logo Section */
+        .footer-logo-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 80px;
+            position: relative;
         }
 
         .footer-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            width: 220px;
+            filter: brightness(0) invert(1);
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
         }
 
-        .logo-container {
-            width: 180px;
-            height: 80px;
-            margin-bottom: 20px;
-            background-color: rgba(212, 175, 55, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 5px;
+        .footer-logo:hover {
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+            transform: translateY(-5px);
+        }
+
+        .logo-decoration {
+            position: absolute;
+            left: -30px;
+            top: -30px;
+            width: 160px;
+            height: 160px;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            overflow: hidden;
-            padding: 10px;
+            transform: rotate(45deg);
+            z-index: 1;
+            transition: var(--transition);
         }
 
-        .logo-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+        .footer-logo-section:hover .logo-decoration {
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: rotate(45deg) scale(1.05);
         }
 
-        .footer-logo p {
-            color: #b8b8b8;
-            line-height: 1.6;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .footer-links h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
+        .footer-cta {
+            text-align: right;
             position: relative;
-            padding-bottom: 10px;
-            color: #FFC700;
-            font-weight: 600;
         }
 
-        .footer-links h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(to right, #FFC700, #F5D680);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #b8b8b8;
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .footer-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            font-weight: 500;
+            position: relative;
             display: inline-block;
-            position: relative;
-            font-weight: 300;
         }
 
-        .footer-links a:hover {
-            color: #FFC700;
-            transform: translateX(5px);
-        }
-
-        .footer-links a::after {
+        .footer-cta h3::after {
             content: '';
             position: absolute;
-            width: 0;
+            bottom: -8px;
+            right: 0;
+            width: 60%;
             height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: #FFC700;
-            transition: width 0.3s ease;
+            background: linear-gradient(to left, var(--gold-primary), transparent);
+            transition: var(--transition);
         }
 
-        .footer-links a:hover::after {
+        .footer-cta:hover h3::after {
             width: 100%;
         }
 
-        .footer-contact .contact-item {
-            display: flex;
+        .cta-button {
+            display: inline-flex;
             align-items: center;
-            margin-bottom: 15px;
-            color: #b8b8b8;
+            justify-content: center;
+            padding: 14px 32px;
+            background: transparent;
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer-contact .contact-item i {
-            margin-right: 10px;
-            color: #FFC700;
-            font-size: 18px;
-            min-width: 20px;
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: 0.6s var(--ease-out);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 215, 0, 0.05);
+            box-shadow: 0 5px 25px rgba(255, 215, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Footer Content Grid */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--gold-primary);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--gold-secondary);
+            transition: var(--transition);
+        }
+
+        .footer-col:hover h4::after {
+            width: 80px;
+            background: var(--gold-primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .footer-col ul li a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold-tertiary);
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold-tertiary);
+            padding-left: 15px;
+        }
+
+        .footer-col ul li a:hover::before {
+            width: 10px;
+        }
+
+        /* Contact Column Special Styling */
+        .contact-col p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.6;
+        }
+
+        .contact-col i {
+            color: var(--gold-secondary);
+            margin-right: 12px;
+            margin-top: 4px;
+            font-size: 0.9rem;
         }
 
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .social-links a {
-            display: flex;
-            justify-content: center;
+            display: inline-flex;
             align-items: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(212, 175, 55, 0.1);
+            justify-content: center;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            color: #FFC700;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            background: rgba(255, 215, 0, 0.05);
+            color: var(--gold-primary);
             border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
         }
 
         .social-links a:hover {
-            background: linear-gradient(45deg, #FFC700, #F5D680);
-            color: #000;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            background: var(--gold-primary);
+            color: var(--bg-dark);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            border-color: transparent;
         }
 
+        /* Footer Bottom */
         .footer-bottom {
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            color: #b8b8b8;
-            font-size: 14px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
         }
 
-        .footer-bottom a {
-            color: #FFC700;
+        .copyright {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.5);
             text-decoration: none;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            position: relative;
         }
 
-        .footer-bottom a:hover {
-            text-decoration: underline;
+        .legal-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold-secondary);
+            transition: var(--transition);
         }
 
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
+        .legal-links a:hover {
+            color: var(--gold-tertiary);
+        }
+
+        .legal-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: absolute;
+            right: 0;
+            top: -60px;
+            width: 50px;
+            height: 50px;
+            background: rgba(10, 10, 10, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 3;
+        }
+
+        .back-to-top:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+            border-color: var(--gold-primary);
+        }
+
+        /* Gold Dust Animation */
+        .gold-dust {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .dust-particle {
+            position: absolute;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-150px) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .footer-grid {
                 gap: 30px;
             }
-            
-            .footer-logo, .footer-links, .footer-contact {
+        }
+
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .footer-logo-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+
+            .footer-cta {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ultra-footer {
+                padding: 70px 0 30px;
+            }
+
+            .footer-container {
+                padding: 0 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-logo {
+                width: 180px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
                 text-align: center;
-                align-items: center;
             }
-            
-            .footer-links h3::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .social-links {
+
+            .legal-links {
+                flex-wrap: wrap;
                 justify-content: center;
             }
-            
- 
-        }
 
-        /* 3D effect on hover */
-        .footer:hover {
-            transform: rotateX(5deg);
-            box-shadow: 0 -30px 60px rgba(212, 175, 55, 0.3);
+            .back-to-top {
+                top: -50px;
+                width: 40px;
+                height: 40px;
+                right: 50%;
+                transform: translateX(50%);
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <footer class="ultra-footer">
+        <!-- Architectural Pillars -->
+        <div class="footer-pillars">
+            <div class="pillar" style="left: 10%"></div>
+            <div class="pillar" style="left: 30%"></div>
+            <div class="pillar" style="left: 50%"></div>
+            <div class="pillar" style="left: 70%"></div>
+            <div class="pillar" style="left: 90%"></div>
+        </div>
 
-    <div class="footer-container">
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-container">
-                        <!-- Replace with your logo -->
-                        <img src="images/Rk.png" alt="Luxury Brand">
-                    </div>
-                    <p>Excellence in every detail. Our gold standard services redefine luxury and quality in the digital space.</p>
+        <!-- Gold Dust Animation -->
+        <div class="gold-dust" id="gold-dust"></div>
+
+        <div class="footer-container">
+            <!-- Logo and CTA Section -->
+            <div class="footer-logo-section">
+                <div style="position: relative;">
+                    <div class="logo-decoration"></div>
+                    <img src="images/Rk.png" alt="RK INTERIOR" class="footer-logo">
+                </div>
+                <div class="footer-cta">
+                    <h3>Ready to Elevate Your Space?</h3>
+                    <button class="cta-button">Schedule Consultation <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></button>
+                </div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Design Studio</h4>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 20px;">Crafting bespoke interiors that harmonize luxury with livability through innovative design solutions.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Houzz"><i class="fab fa-houzz"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-links">
-                    <h3>Navigation</h3>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Luxury Residential</a></li>
+                        <li><a href="#">Penthouse Design</a></li>
+                        <li><a href="#">Boutique Commercial</a></li>
+                        <li><a href="#">Architectural Detailing</a></li>
+                        <li><a href="#">Art Curation</a></li>
+                        <li><a href="#">Lighting Masterplan</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-links">
-                    <h3>Services</h3>
+
+                <div class="footer-col">
+                    <h4>Projects</h4>
                     <ul>
-                        <li><a href="#">Luxury Web Design</a></li>
-                        <li><a href="#">Premium App Development</a></li>
-                        <li><a href="#">Exclusive Branding</a></li>
-                        <li><a href="#">VIP Consulting</a></li>
-                        <li><a href="#">Elite Digital Solutions</a></li>
+                        <li><a href="#">Mumbai</a></li>
+                        <li><a href="#">Pune</a></li>
+                        <li><a href="#">Gujrat</a></li>
+                        <li><a href="#">Navi Mumbai</a></li>
+                        <li><a href="#">Banglore</a></li>
+                        <li><a href="#">View All Portfolio</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-contact">
-                    <h3>Contact</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>kamla nagar, Mumbai</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+91 999999999999  </span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>contact@rkinterior.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Mon-Fri: 9AM - 6PM (GMT)</span>
-                    </div>
+
+                <div class="footer-col contact-col">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i>  02, Bharatiya Kamala Nagar, Antop Hill, Mumbai, Maharashtra 400037</p>
+                    <p><i class="fas fa-phone"></i>  +91 9699999810</p>
+                    <p><i class="fas fa-envelope"></i> rk.rkinterior@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM - 8PM</p>
+                    <p><i class="fas fa-calendar-alt"></i> By appointment only</p>
                 </div>
             </div>
-            
+
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p>&copy; 2025 <a href="#">RK INTERIOR</a>. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <div class="copyright">
+                    © 2023 RK INTERIORS. All rights reserved.
+                </div>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Preferences</a>
+                </div>
             </div>
-        </footer>
-    </div>
+
+            <!-- Back to Top -->
+            <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <i class="fas fa-chevron-up"></i>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const footerContainer = document.querySelector('.footer-container');
-            let lastScrollPosition = window.scrollY;
+        // Create gold dust particles
+        function createGoldDust() {
+            const container = document.getElementById('gold-dust');
+            const particleCount = 30;
             
-            // Initial state - footer visible
-            footerContainer.classList.remove('hidden');
-            
-            window.addEventListener('scroll', function() {
-                const currentScrollPosition = window.scrollY;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('dust-particle');
                 
-                // Only trigger if scroll difference is significant
-                if (Math.abs(currentScrollPosition - lastScrollPosition) > 50) {
-                    if (currentScrollPosition > lastScrollPosition) {
-                        // Scrolling down - show footer
-                        footerContainer.classList.remove('hidden');
-                    } else {
-                        // Scrolling up - hide footer
-                        footerContainer.classList.add('hidden');
+                // Random properties
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 4 + 6;
+                const opacity = Math.random() * 0.3 + 0.1;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.bottom = `-${size}px`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.opacity = opacity;
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        // Initialize animations
+        window.addEventListener('load', () => {
+            createGoldDust();
+            
+            // Animate decorative elements on scroll
+            const footer = document.querySelector('.ultra-footer');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
                     }
-                    lastScrollPosition = currentScrollPosition;
-                }
-            });
+                });
+            }, { threshold: 0.1 });
             
-            // 3D tilt effect
-            const footer = document.querySelector('.footer');
-            
-            footer.addEventListener('mousemove', (e) => {
-                const x = e.clientX - footer.getBoundingClientRect().left;
-                const y = e.clientY - footer.getBoundingClientRect().top;
-                
-                const centerX = footer.offsetWidth / 2;
-                const centerY = footer.offsetHeight / 2;
-                
-                const angleX = (y - centerY) / 20;
-                const angleY = (centerX - x) / 20;
-                
-                footer.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-                footer.style.boxShadow = `0 -30px 60px rgba(212, 175, 55, ${0.3 + (y/footer.offsetHeight)*0.2})`;
-            });
-            
-            footer.addEventListener('mouseleave', () => {
-                footer.style.transform = 'rotateX(0) rotateY(0)';
-                footer.style.boxShadow = '0 -20px 50px rgba(212, 175, 55, 0.2)';
-            });
+            observer.observe(footer);
         });
     </script>
 </body>
