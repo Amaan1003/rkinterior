@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Luxury Interior Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --gold-primary: #FFD700;
+      --gold-secondary: #D4AF37;
+      --bg-dark: #0a0a0a;
+      --bg-light: #1a1a1a;
+      --text-light: rgba(255,255,255,0.85);
+      --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-dark);
+      color: white;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* Luxury Header */
+    .lux-header {
+      position: relative;
+      padding: 8vw 5vw;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .lux-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.6) 100%);
+      z-index: 1;
+    }
+
+    .lux-header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .lux-subtitle {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    .lux-subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: var(--gold-primary);
+    }
+
+    .lux-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      margin: 1rem 0 2rem;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    .lux-title-decoration {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    /* Luxury Content Section */
+    .lux-about-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5vw;
+      position: relative;
+    }
+
+    .lux-about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5vw;
+      align-items: center;
+    }
+
+    .lux-about-text {
+      color: var(--text-light);
+      font-size: clamp(1rem, 1.2vw, 1.2rem);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .lux-about-text::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold-primary), transparent);
+    }
+
+    /* Luxury Image Collage */
+    .lux-collage {
+      position: relative;
+      height: 600px;
+      width: 100%;
+    }
+
+    .lux-collage-item {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 5px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      transition: var(--transition);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .lux-collage-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+
+    .lux-collage-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .lux-collage-item:nth-child(1) {
+      width: 50%;
+      height: 40%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .lux-collage-item:nth-child(2) {
+      width: 45%;
+      height: 35%;
+      top: 5%;
+      right: 0;
+      z-index: 2;
+    }
+
+    .lux-collage-item:nth-child(3) {
+      width: 55%;
+      height: 30%;
+      bottom: 20%;
+      left: 0;
+      z-index: 1;
+    }
+
+    .lux-collage-item:nth-child(4) {
+      width: 40%;
+      height: 45%;
+      top: 30%;
+      right: 5%;
+      z-index: 3;
+    }
+
+    .lux-collage-item:nth-child(5) {
+      width: 35%;
+      height: 25%;
+      bottom: 0;
+      left: 30%;
+      z-index: 2;
+    }
+
+    .lux-collage-item:nth-child(6) {
+      width: 30%;
+      height: 30%;
+      bottom: 10%;
+      right: 0;
+      z-index: 1;
+    }
+
+    /* Stats Section */
+    .lux-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .lux-stat-item {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(26, 26, 26, 0.3);
+      border-radius: 5px;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      transition: var(--transition);
+    }
+
+    .lux-stat-item:hover {
+      transform: translateY(-10px);
+      background: rgba(26, 26, 26, 0.5);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .lux-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      color: var(--gold-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .lux-stat-label {
+      font-size: clamp(0.8rem, 1vw, 1rem);
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Team Section */
+    .lux-team-section {
+      padding: 5vw;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,1) 10%);
+    }
+
+    .lux-team-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--gold-primary);
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .lux-team-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: var(--gold-primary);
+    }
+
+    /* Signature */
+    .lux-signature {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--gold-primary);
+      margin-top: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .lux-signature::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold-primary), transparent);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .lux-about-grid {
+        gap: 3rem;
+      }
+      
+      .lux-collage {
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .lux-about-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .lux-collage {
+        height: 400px;
+        margin-top: 3rem;
+      }
+      
+      .lux-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .lux-collage {
+        height: 500px;
+      }
+      
+      .lux-collage-item:nth-child(1) {
+        width: 60%;
+        height: 30%;
+      }
+      
+      .lux-collage-item:nth-child(2) {
+        width: 50%;
+        height: 25%;
+        top: 10%;
+      }
+      
+      .lux-collage-item:nth-child(3) {
+        width: 65%;
+        height: 25%;
+        bottom: 25%;
+      }
+      
+      .lux-collage-item:nth-child(4) {
+        width: 45%;
+        height: 35%;
+        top: 35%;
+      }
+      
+      .lux-collage-item:nth-child(5) {
+        width: 40%;
+        height: 20%;
+        bottom: 5%;
+        left: 20%;
+      }
+      
+      .lux-collage-item:nth-child(6) {
+        width: 35%;
+        height: 25%;
+        bottom: 15%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .lux-collage {
+        height: 400px;
+      }
+      
+      .lux-stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .lux-about-text {
+        padding-left: 1rem;
+      }
+      
+      .lux-about-text::before {
+        width: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Luxury Header -->
+  <header class="lux-header" style="background: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80') center/cover no-repeat;">
+    <div class="lux-header-content">
+      <div class="lux-subtitle">Crafting Timeless Spaces</div>
+      <h1 class="lux-title">About Our Studio</h1>
+      <div class="lux-title-decoration"></div>
+      <p style="max-width: 700px; margin: 0 auto; color: var(--text-light);">
+        Where architectural precision meets interior artistry to create spaces that inspire and endure.
+      </p>
+    </div>
+  </header>
+
+  <!-- Luxury About Content -->
+  <section class="lux-about-content">
+    <div class="lux-about-grid">
+      <div>
+        <p class="lux-about-text">
+          Established with a vision to redefine luxury living, RK Interiors has been crafting extraordinary spaces since 2010. 
+          Our journey began in Mumbai with a single project and has blossomed into creating some of India's most exquisite interiors.
+        </p>
+        <p class="lux-about-text">
+          We believe interiors should tell a story - your story. Each space we design is a carefully curated composition of 
+          light, texture, and form, blending contemporary aesthetics with timeless elegance.
+        </p>
+        <p class="lux-about-text">
+          Our team of award-winning designers and craftsmen bring together decades of experience in both architecture and 
+          interior design, ensuring every project benefits from our holistic approach to space creation.
+        </p>
+        
+        <div class="lux-stats">
+          <div class="lux-stat-item">
+            <div class="lux-stat-number">250+</div>
+            <div class="lux-stat-label">Projects Completed</div>
+          </div>
+          <div class="lux-stat-item">
+            <div class="lux-stat-number">15</div>
+            <div class="lux-stat-label">Industry Awards</div>
+          </div>
+          <div class="lux-stat-item">
+            <div class="lux-stat-number">100%</div>
+            <div class="lux-stat-label">Client Satisfaction</div>
+          </div>
+          <div class="lux-stat-item">
+            <div class="lux-stat-number">22</div>
+            <div class="lux-stat-label">Expert Craftsmen</div>
+          </div>
+        </div>
+        
+        <div class="lux-signature">RAFIK GUJJAR</div>
+      </div>
+      
+      <!-- Luxury Image Collage -->
+      <div class="lux-collage">
+        <div class="lux-collage-item">
+          <img src="images/aboutus/image (1).jpg" alt="Our Design Studio">
+        </div>
+        <div class="lux-collage-item">
+          <img src="images/aboutus/image (3).jpg" alt="Team Meeting">
+        </div>
+        <div class="lux-collage-item">
+          <img src="images/aboutus/image (4).jpg" alt="Project Planning">
+        </div>
+        <div class="lux-collage-item">
+          <img src="images/aboutus/image (6).jpg" alt="Material Selection">
+        </div>
+        <div class="lux-collage-item">
+          <img src="images/aboutus/image (9).jpg" alt="Design Process">
+        </div>
+        <div class="lux-collage-item">
+          <img src="images/aboutus/image (7.jpg" alt="Studio Workspace">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Philosophy Section -->
+  <section class="lux-about-content">
+    <h2 class="lux-team-title">Our Design Philosophy</h2>
+    
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+        <div>
+          <h3 style="font-family: 'Playfair Display', serif; color: var(--gold-primary); margin-bottom: 1rem; font-size: 1.5rem;">
+            <i class="fas fa-pencil-ruler" style="margin-right: 10px;"></i> Architectural Integrity
+          </h3>
+          <p style="color: var(--text-light);">
+            We approach each project with architectural rigor, ensuring structural honesty while creating spaces that 
+            inspire. Our designs respect the building's form while enhancing its function.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-family: 'Playfair Display', serif; color: var(--gold-primary); margin-bottom: 1rem; font-size: 1.5rem;">
+            <i class="fas fa-palette" style="margin-right: 10px;"></i> Material Poetry
+          </h3>
+          <p style="color: var(--text-light);">
+            Materials speak volumes in our designs. We carefully select and combine textures to create tactile 
+            experiences that engage all senses and stand the test of time.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-family: 'Playfair Display', serif; color: var(--gold-primary); margin-bottom: 1rem; font-size: 1.5rem;">
+            <i class="fas fa-lightbulb" style="margin-right: 10px;"></i> Light as Medium
+          </h3>
+          <p style="color: var(--text-light);">
+            Light transforms spaces. We design with natural and artificial light to create dynamic environments that 
+            change beautifully throughout the day and seasons.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-family: 'Playfair Display', serif; color: var(--gold-primary); margin-bottom: 1rem; font-size: 1.5rem;">
+            <i class="fas fa-heart" style="margin-right: 10px;"></i> Client-Centric
+          </h3>
+          <p style="color: var(--text-light);">
+            Your vision is our blueprint. We listen deeply to understand your lifestyle and aspirations, translating 
+            them into spaces that reflect your unique personality and needs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="lux-team-section">
+    <h2 class="lux-team-title">Our Creative Process</h2>
+    
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+      <div style="padding: 2rem; background: rgba(26,26,26,0.5); border-radius: 5px; border-bottom: 3px solid var(--gold-primary);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-primary); margin-bottom: 1rem;">01</div>
+        <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Discovery</h3>
+        <p style="color: var(--text-light);">
+          In-depth consultations to understand your vision, lifestyle, and functional requirements.
+        </p>
+      </div>
+      
+      <div style="padding: 2rem; background: rgba(26,26,26,0.5); border-radius: 5px; border-bottom: 3px solid var(--gold-primary);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-primary); margin-bottom: 1rem;">02</div>
+        <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Conceptualization</h3>
+        <p style="color: var(--text-light);">
+          Developing initial design concepts with mood boards, sketches, and material palettes.
+        </p>
+      </div>
+      
+      <div style="padding: 2rem; background: rgba(26,26,26,0.5); border-radius: 5px; border-bottom: 3px solid var(--gold-primary);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-primary); margin-bottom: 1rem;">03</div>
+        <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Design Development</h3>
+        <p style="color: var(--text-light);">
+          Refining the design with detailed drawings, 3D visualizations, and material selections.
+        </p>
+      </div>
+      
+      <div style="padding: 2rem; background: rgba(26,26,26,0.5); border-radius: 5px; border-bottom: 3px solid var(--gold-primary);">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-primary); margin-bottom: 1rem;">04</div>
+        <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Execution</h3>
+        <p style="color: var(--text-light);">
+          Meticulous implementation with our skilled craftsmen, ensuring design integrity at every stage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Automatically adjust iframe height
+    function sendHeight() {
+      const height = document.body.scrollHeight;
+      window.parent.postMessage({
+        iframeId: 'aboutFrame',
+        iframeHeight: height
+      }, '*');
+    }
+
+    // Send height when loaded and on resize
+    window.addEventListener('load', sendHeight);
+    window.addEventListener('resize', sendHeight);
+
+    // Add animation to collage items on scroll
+    const collageItems = document.querySelectorAll('.lux-collage-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    collageItems.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>
