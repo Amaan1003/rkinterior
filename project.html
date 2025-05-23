@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --gold-primary: #FFD700;
+      --gold-secondary: #D4AF37;
+      --bg-dark: #0a0a0a;
+      --bg-light: #1a1a1a;
+      --text-light: rgba(255,255,255,0.85);
+      --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-dark);
+      color: white;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Luxury Header */
+    .luxury-projects {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: white;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title span {
+      color: var(--gold-primary);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 60px;
+      letter-spacing: 1px;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 5px;
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .project-image {
+      position: relative;
+      overflow: hidden;
+      height: 350px;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .overlay-content {
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    .project-card:hover .overlay-content {
+      transform: translateY(0);
+    }
+
+    .overlay-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .overlay-content p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .view-btn {
+      display: inline-block;
+      padding: 10px 25px;
+      background: transparent;
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .view-btn:hover {
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .project-info {
+      padding: 25px;
+      background: var(--bg-light);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .project-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: white;
+    }
+
+    .project-info p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--gold-primary);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* View All Button */
+    .view-all {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--gold-primary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    .cta-link span {
+      margin-left: 10px;
+      transition: var(--transition);
+    }
+
+    .cta-link:hover {
+      color: var(--gold-secondary);
+    }
+
+    .cta-link:hover span {
+      transform: translateX(5px);
+    }
+
+    .cta-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--gold-primary);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s ease;
+    }
+
+    .cta-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .projects-grid {
+        gap: 25px;
+      }
+      
+      .project-image {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .luxury-projects {
+        padding: 80px 0;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .luxury-projects {
+        padding: 60px 0;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px;
+      }
+      
+      .project-image {
+        height: 250px;
+      }
+      
+      .project-overlay {
+        padding: 20px;
+      }
+      
+      .overlay-content h3 {
+        font-size: 1.5rem;
+      }
+      
+      .project-info {
+        padding: 20px;
+      }
+      
+      .project-info h3 {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .project-image {
+        height: 300px;
+      }
+      
+      .view-btn {
+        padding: 8px 20px;
+        font-size: 0.7rem;
+      }
+      
+      .cta-link {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+        <div id="navbar-placeholder"></div>
+
+        <script>
+          fetch('navbar.html')
+            .then(res => res.text())
+            .then(data => {
+              document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+        </script>
+
+
+  <section id="featured-projects" class="luxury-projects">
+    <div class="container">
+      <h2 class="section-title">Featured <span>Creations</span></h2>
+      <p class="section-subtitle">Where Vision Meets Extraordinary Execution</p>
+      
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.pexels.com/photos/32136782/pexels-photo-32136782/free-photo-of-elegant-vintage-chandelier-in-classic-interior.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury Penthouse Design">
+            <div class="project-overlay">
+              <div class="overlay-content">
+                <h3>Golden Heights Penthouse</h3>
+                <p>WADALA, MUMBAI</p>
+                <span class="view-btn">View Details</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Golden Heights Penthouse</h3>
+            <p>A 360° redesign of a 5,000 sq ft sky residence with custom Italian finishes</p>
+            <div class="project-meta">
+              <span>Residential</span>
+              <span>2024</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.pexels.com/photos/1457844/pexels-photo-1457844.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Boutique Hotel Lobby">
+            <div class="project-overlay">
+              <div class="overlay-content">
+                <h3>Azure Sands Resort</h3>
+                <p>LONAVLA, NAVI MUMBAI</p>
+                <span class="view-btn">View Details</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Azure Sands Resort</h3>
+            <p>Oceanfront luxury resort blending design with organic elements</p>
+            <div class="project-meta">
+              <span>Hospitality</span>
+              <span>2023</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.pexels.com/photos/32135631/pexels-photo-32135631/free-photo-of-modern-spiral-chandelier-in-decorated-mosque-ceiling.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Executive Office Space">
+            <div class="project-overlay">
+              <div class="overlay-content">
+                <h3>Platinum Capital Offices</h3>
+                <p>COLABA, MUMBAI</p>
+                <span class="view-btn">View Details</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Platinum Capital Offices</h3>
+            <p>48,000 sq ft corporate headquarters featuring bespoke architectural details</p>
+            <div class="project-meta">
+              <span>Commercial</span>
+              <span>2023</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 - Added -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Modern Villa">
+            <div class="project-overlay">
+              <div class="overlay-content">
+                <h3>Palm Grove Villa</h3>
+                <p>BANDRA, MUMBAI</p>
+                <span class="view-btn">View Details</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Palm Grove Villa</h3>
+            <p>Contemporary 8,000 sq ft villa with seamless indoor-outdoor living spaces</p>
+            <div class="project-meta">
+              <span>Residential</span>
+              <span>2024</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 - Added -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Luxury Restaurant">
+            <div class="project-overlay">
+              <div class="overlay-content">
+                <h3>Éclat Fine Dining</h3>
+                <p>LOWER PAREL, MUMBAI</p>
+                <span class="view-btn">View Details</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Éclat Fine Dining</h3>
+            <p>Michelin-starred restaurant with custom lighting and artisanal finishes</p>
+            <div class="project-meta">
+              <span>Hospitality</span>
+              <span>2023</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 - Added -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Luxury Showroom">
+            <div class="project-overlay">
+              <div class="overlay-content">
+                <h3>Opal Jewelry Boutique</h3>
+                <p>NARIMAN POINT, MUMBAI</p>
+                <span class="view-btn">View Details</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Opal Jewelry Boutique</h3>
+            <p>High-end retail space with custom display cases and dramatic lighting</p>
+            <div class="project-meta">
+              <span>Retail</span>
+              <span>2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="view-all">
+        <a href="#" class="cta-link">Explore All Projects <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <iframe 
+    src="footer.html" 
+    style="width: 100%; height: 600px; border: none; overflow: hidden;"
+    scrolling="no"
+    frameborder="0"
+></iframe>
+
+<script>
+        fetch('navbar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+            // Initialize mobile menu after navbar is loaded
+            const menuToggle = document.querySelector('.custom-menu-toggle');
+            const nav = document.querySelector('.custom-nav');
+            
+            if (menuToggle && nav) {
+              menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('open');
+                if (nav.classList.contains('open')) {
+                  menuToggle.innerHTML = '&times;';
+                } else {
+                  menuToggle.innerHTML = '&#9776;';
+                }
+              });
+              
+              // Close menu when clicking on a link (optional)
+              const navLinks = document.querySelectorAll('.custom-nav a');
+              navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                  if (window.innerWidth <= 768) {
+                    nav.classList.remove('open');
+                    menuToggle.innerHTML = '&#9776;';
+                  }
+                });
+              });
+            }
+          });
+      </script>
+
+  <script>
+    // Project card hover effect enhancement
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const x = e.pageX - card.getBoundingClientRect().left;
+        const y = e.pageY - card.getBoundingClientRect().top;
+        
+        const centerX = card.offsetWidth / 2;
+        const centerY = card.offsetHeight / 2;
+        
+        const angleX = (y - centerY) / 20;
+        const angleY = (centerX - x) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(-10px)';
+      });
+    });
+
+    // Automatically adjust iframe height
+    function sendHeight() {
+      const height = document.body.scrollHeight;
+      window.parent.postMessage({
+        iframeId: 'projectsFrame',
+        iframeHeight: height
+      }, '*');
+    }
+
+    // Send height when loaded and on resize
+    window.addEventListener('load', sendHeight);
+    window.addEventListener('resize', sendHeight);
+  </script>
+</body>
+</html>

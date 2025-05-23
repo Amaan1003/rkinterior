@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Luxury Interior Design</title>
+  <title>About Us</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
@@ -560,6 +560,39 @@
     scrolling="no"
     frameborder="0"
 ></iframe>
+
+<script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+        // Initialize mobile menu after navbar is loaded
+        const menuToggle = document.querySelector('.custom-menu-toggle');
+        const nav = document.querySelector('.custom-nav');
+        
+        if (menuToggle && nav) {
+          menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('open');
+            if (nav.classList.contains('open')) {
+              menuToggle.innerHTML = '&times;';
+            } else {
+              menuToggle.innerHTML = '&#9776;';
+            }
+          });
+          
+          // Close menu when clicking on a link (optional)
+          const navLinks = document.querySelectorAll('.custom-nav a');
+          navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              if (window.innerWidth <= 768) {
+                nav.classList.remove('open');
+                menuToggle.innerHTML = '&#9776;';
+              }
+            });
+          });
+        }
+      });
+  </script>
 
 
   <script>
